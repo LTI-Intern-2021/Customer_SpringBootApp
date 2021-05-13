@@ -4,7 +4,10 @@ import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import com.example.exception.ResourceNotFoundException;
 
 import com.example.Entity.Customer;
 
@@ -19,9 +22,12 @@ public class CustomerDao {
 		return customerRepository.insert(customer);
 	}
 
-	public Optional<Customer> getCustomerById(int id) {
+	public ResponseEntity<Customer> getCustomerById(int id) {
 		// TODO Auto-generated method stub
-		return customerRepository.findById(id);
+		
+		Customer customer=customerRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
+		return new ResponseEntity<>(customer, HttpStatus.OK);
 	}
 
     public Collection<Customer> getAllCustomers() {

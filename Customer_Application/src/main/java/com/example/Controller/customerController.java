@@ -5,6 +5,8 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,15 +25,16 @@ import org.slf4j.LoggerFactory;
 @RestController
 @RequestMapping("/customer")
 @Slf4j
-public class customerController {
+public class CustomerController {
 	
-	Logger logger = LoggerFactory.getLogger(customerController.class);
+	Logger logger = LoggerFactory.getLogger(CustomerController.class);
 	@Autowired
 	public CustomerService customerService;
 
 	@GetMapping("/getAll")
 	public Collection<Customer>  getAllCustomers(){
-		log.info("Inside getAllCustomers method of CustomerController");
+		logger.info("Inside getAllCustomers method of CustomerController");
+		
 		return customerService.getAllCustomers();
 	}
 
@@ -47,18 +50,11 @@ public class customerController {
 	
 	
 	@GetMapping("/{id}")
-	public Optional<Customer> getCustomerById(@PathVariable("id") int id)
+	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") int id)
 	{
-		logger.info("Inside Controller's getCustomerById method");
+		
+		
 		return customerService.getCustomerById(id);
-	}
-	
-	
-	@DeleteMapping("/{id}")
-	public Customer delCustomerById(@PathVariable("id") int id)
-	{
-		logger.info("Inside Controller's delCustomerById method");
-		return customerService.delCustomerById(id);
 	}
 	
 	

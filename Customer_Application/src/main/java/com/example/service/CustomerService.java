@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.Entity.Customer;
@@ -20,12 +21,17 @@ public class CustomerService {
 		return customerDao.addCustomer(customer);
 	}
 
-	public Optional<Customer> getCustomerById(int id) {
-		// TODO Auto-generated method stub
-		return customerDao.getCustomerById(id);
-	}
+//	public ResponseEntity<Customer> getCustomerById(int id) {
+//		// TODO Auto-generated method stub
+//		return customerDao.getCustomerById(id);
+//	}
 
     public Collection<Customer> getAllCustomers() {
 		return customerDao.getAllCustomers();
     }
+
+	public ResponseEntity<Customer> getCustomerById(int id) {
+		// TODO Auto-generated method stub
+		return customerDao.getCustomerById(id);
+	}
 }
