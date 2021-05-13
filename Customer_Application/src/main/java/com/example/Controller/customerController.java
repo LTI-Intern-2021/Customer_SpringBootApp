@@ -31,7 +31,7 @@ public class customerController {
 
 	@GetMapping("/getAll")
 	public Collection<Customer>  getAllCustomers(){
-		log.info("Inside getAllCustomers method of CustomerController");
+		logger.info("Inside getAllCustomers method of CustomerController");
 		return customerService.getAllCustomers();
 	}
 
