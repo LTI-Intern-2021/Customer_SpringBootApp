@@ -15,11 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Entity.Customer;
 import com.example.service.CustomerService;
 
+ 
 @Slf4j
+
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @RestController
 @RequestMapping("/customer")
+@Slf4j
 public class customerController {
 	
+	Logger logger = LoggerFactory.getLogger(customerController.class);
 	@Autowired
 	public CustomerService customerService;
 
@@ -33,6 +43,9 @@ public class customerController {
 	@PostMapping("/add")
 	public Customer addCustomer(@RequestBody Customer customer)
 	{
+		
+		logger.info("Inside Controller's addCustomer method");
+
 		return customerService.addCustomer(customer);
 	}
 	
@@ -40,6 +53,7 @@ public class customerController {
 	@GetMapping("/{id}")
 	public Optional<Customer> getCustomerById(@PathVariable("id") int id)
 	{
+		logger.info("Inside Controller's getCustomerById method");
 		return customerService.getCustomerById(id);
 	}
 	
