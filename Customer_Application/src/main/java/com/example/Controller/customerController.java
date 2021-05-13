@@ -34,7 +34,7 @@ public class CustomerController {
 	@GetMapping("/getAll")
 	public Collection<Customer>  getAllCustomers(){
 		logger.info("Inside getAllCustomers method of CustomerController");
-		
+
 		return customerService.getAllCustomers();
 	}
 
@@ -57,6 +57,16 @@ public class CustomerController {
 		return customerService.getCustomerById(id);
 	}
 	
+
+	/*
+	@DeleteMapping("/{id}")
+	public Customer delCustomerById(@PathVariable("id") int id)
+	{
+		logger.info("Inside Controller's delCustomerById method");
+		return customerService.delCustomerById(id);
+	}
+	*/
+
 	
 
 }
