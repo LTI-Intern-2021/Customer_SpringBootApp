@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,7 @@ public class CustomerService {
 		return customerDao.getCustomerById(id);
 	}
 
+    public Collection<Customer> getAllCustomers() {
+		return customerDao.getAllCustomers();
+    }
 }

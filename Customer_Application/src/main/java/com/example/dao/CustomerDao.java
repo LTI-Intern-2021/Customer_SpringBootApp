@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +24,7 @@ public class CustomerDao {
 		return customerRepository.findById(id);
 	}
 
+    public Collection<Customer> getAllCustomers() {
+		return customerRepository.findAll();
+    }
 }
