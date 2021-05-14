@@ -33,4 +33,11 @@ public class CustomerDao {
     public Collection<Customer> getAllCustomers() {
 		return customerRepository.findAll();
     }
+	
+	public Optional<Customer> delByCustomerId(int id)
+	{
+		Optiona<Customer> customer = repository.findById(id);
+		customer.ifPresent(b -> repository.delete(b));
+         	return customer;
+	}
 }
