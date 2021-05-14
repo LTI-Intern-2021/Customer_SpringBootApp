@@ -36,8 +36,19 @@ public class CustomerDao {
 	
 	public Optional<Customer> delByCustomerId(int id)
 	{
-		Optiona<Customer> customer = repository.findById(id);
-		customer.ifPresent(b -> repository.delete(b));
+		Optional<Customer> customer = customerRepository.findById(id);
+		customer.ifPresent(b -> customerRepository.delete(b));
          	return customer;
+	}
+	
+	public Optional<Customer> updateCustomerById(int id, CustomerUpdateInfo customerUpdateInfo) 
+	{
+        	Optional<Customer> customer = customerRepository.findById(id);
+        	customer.ifPresent(b -> b.setCustomerId(customerUpdateInfo.getCustomerId()));
+        	customer.ifPresent(b -> b.setCustomerName(customerUpdateInfo.getCustomerName()));
+		customer.ifPresent(b -> b.setCustomerEmail(customerUpdateInfo.getCustomerEmail()));
+		customer.ifPresent(b -> b.setCustomerLocation(customerUpdateInfo.getCustomerLocation()));
+        	customer.ifPresent(b -> customerRepository.save(b));
+        	return customer;
 	}
 }
