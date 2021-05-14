@@ -37,6 +37,6 @@ public class CustomerService {
 	
 	public Optional<Customer> delByCustomerId(int id)
 	{
-		return customerDAO.delByCustomerId(id);
+		return customerDao.delByCustomerId(id);
 	}
 }
