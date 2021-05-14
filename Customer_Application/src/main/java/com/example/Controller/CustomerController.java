@@ -58,14 +58,14 @@ public class CustomerController {
 	}
 	
 
-	/*
+	
 	@DeleteMapping("/{id}")
 	public Customer delCustomerById(@PathVariable("id") int id)
 	{
 		logger.info("Inside Controller's delCustomerById method");
 		return customerService.delCustomerById(id);
 	}
-	*/
+	
 
 	
 
