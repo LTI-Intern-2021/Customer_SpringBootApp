@@ -39,4 +39,9 @@ public class CustomerService {
 	{
 		return customerDao.delByCustomerId(id);
 	}
+	
+	 public Optional<Customer> updateCustomerById(int id, CustomerUpdateInfo customerUpdateInfo) 
+	 {
+        	return customerDao.updateCustomerById(id, customerUpdateInfo);
+    	}
 }
