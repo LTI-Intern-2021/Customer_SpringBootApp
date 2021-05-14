@@ -34,4 +34,9 @@ public class CustomerService {
 		// TODO Auto-generated method stub
 		return customerDao.getCustomerById(id);
 	}
+	
+	public Optional<Customer> delByCustomerId(int id)
+	{
+		return customerDAO.delByCustomerId(id);
+	}
 }
