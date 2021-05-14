@@ -67,6 +67,12 @@ public class CustomerController {
 	}
 	
 
-	
+	 @PutMapping("/{id}")
+    	public Optional<Customer> updateCustomerById(@PathVariable("id") int id, @RequestBody CustomerUpdateInfo
+            customerUpdateInfo) 
+	{
+        	return customerService.updateCustomerById(id, customerUpdateInfo);
+    	}
+
 
 }
