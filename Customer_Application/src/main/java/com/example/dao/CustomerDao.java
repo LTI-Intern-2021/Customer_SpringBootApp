@@ -36,7 +36,8 @@ public class CustomerDao {
 	
 	public Optional<Customer> delByCustomerId(int id)
 	{
-		Optional<Customer> customer = customerRepository.findById(id);
+		Optional<Customer> customer = customerRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
 		customer.ifPresent(b -> customerRepository.delete(b));
          	return customer;
 	}
