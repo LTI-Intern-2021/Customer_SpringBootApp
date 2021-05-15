@@ -43,7 +43,8 @@ public class CustomerDao {
 	
 	public Optional<Customer> updateCustomerById(int id, CustomerUpdateInfo customerUpdateInfo) 
 	{
-        	Optional<Customer> customer = customerRepository.findById(id);
+        	Optional<Customer> customer = customerRepository.findById(id)
+			.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
         	customer.ifPresent(b -> b.setCustomerId(customerUpdateInfo.getCustomerId()));
         	customer.ifPresent(b -> b.setCustomerName(customerUpdateInfo.getCustomerName()));
 		customer.ifPresent(b -> b.setCustomerEmail(customerUpdateInfo.getCustomerEmail()));
