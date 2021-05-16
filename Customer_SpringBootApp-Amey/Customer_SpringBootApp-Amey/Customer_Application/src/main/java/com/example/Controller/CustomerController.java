@@ -1,6 +1,7 @@
 package com.example.Controller;
 
 import java.util.Collection;
+
 import java.util.Optional;
 
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import com.example.Entity.Customer;
+import com.example.Entity.CustomerUpdateInfo;
 @RestController
 @RequestMapping("/customer")
 @Slf4j
@@ -30,7 +33,6 @@ public class CustomerController {
 	Logger logger = LoggerFactory.getLogger(CustomerController.class);
 	@Autowired
 	public CustomerService customerService;
-
 	@GetMapping("/getAll")
 	public Collection<Customer>  getAllCustomers(){
 		logger.info("Inside getAllCustomers method of CustomerController");
@@ -60,18 +62,18 @@ public class CustomerController {
 
 	
 	@DeleteMapping("/{id}")
-	public Optional<Customer> delCustomerById(@PathVariable("id") int id)
+	public void delByCustomerId(@PathVariable("id") int id)
 	{
 		logger.info("Inside Controller's delCustomerById method");
-		return customerService.delCustomerById(id);
+		customerService.delByCustomerId(id);
 	}
 	
 
 	 @PutMapping("/{id}")
-    	public Optional<Customer> updateCustomerById(@PathVariable("id") int id, @RequestBody CustomerUpdateInfo
-            customerUpdateInfo) 
+    	public Customer updateCustomerById(@PathVariable("id") int id, @RequestBody Customer
+            customer) 
 	{
-        	return customerService.updateCustomerById(id, customerUpdateInfo);
+        	return customerService.updateCustomerById(id, customer);
     	}
 
 

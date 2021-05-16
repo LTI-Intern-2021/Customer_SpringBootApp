@@ -2,7 +2,10 @@ package com.example.dao;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.NoSuchElementException;
 
+import com.example.Entity.CustomerUpdateInfo;
+import com.example.Entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +13,7 @@ import org.springframework.stereotype.Component;
 import com.example.exception.ResourceNotFoundException;
 
 import com.example.Entity.Customer;
-
+import java.util.Optional;
 @Component
 public class CustomerDao {
 
@@ -34,23 +37,25 @@ public class CustomerDao {
 		return customerRepository.findAll();
     }
 	
-	public Optional<Customer> delByCustomerId(int id)
+	public void delByCustomerId(int id)
 	{
-		Optional<Customer> customer = customerRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
-		customer.ifPresent(b -> customerRepository.delete(b));
-         	return customer;
+		try {
+			 customerRepository.deleteById(id);
+			        } 
+		catch (NoSuchElementException e) 
+		{
+			e.printStackTrace();
+			        }
 	}
 	
-	public Optional<Customer> updateCustomerById(int id, CustomerUpdateInfo customerUpdateInfo) 
+	public Customer updateCustomerById(int id, Customer customer) 
 	{
-        	Optional<Customer> customer = customerRepository.findById(id)
-			.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
-        	customer.ifPresent(b -> b.setCustomerId(customerUpdateInfo.getCustomerId()));
-        	customer.ifPresent(b -> b.setCustomerName(customerUpdateInfo.getCustomerName()));
-		customer.ifPresent(b -> b.setCustomerEmail(customerUpdateInfo.getCustomerEmail()));
-		customer.ifPresent(b -> b.setCustomerLocation(customerUpdateInfo.getCustomerLocation()));
-        	customer.ifPresent(b -> customerRepository.save(b));
-        	return customer;
+        	Optional<Customer> findCustomerInfo = customerRepository.findById(id);
+        	Customer customerInfo= findCustomerInfo.get();
+        	customerInfo.setCustomerId(customer.getCustomerId());
+        	customerInfo.setCustomerName(customer.getCustomerName());
+		customerInfo.setCustomerEmail(customer.getCustomerEmail());
+		customerInfo.setCustomerLocation(customer.getCustomerLocation());
+        	return customerRepository.save(customerInfo); 
 	}
 }
