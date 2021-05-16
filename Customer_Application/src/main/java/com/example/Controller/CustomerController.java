@@ -1,7 +1,7 @@
 package com.example.Controller;
 
 import java.util.Collection;
-import java.util.Optional;
+
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,6 @@ import com.example.Entity.Customer;
 import com.example.service.CustomerService;
 
 import lombok.extern.slf4j.Slf4j;
-import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
