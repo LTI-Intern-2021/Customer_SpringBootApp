@@ -22,7 +22,7 @@ public class CustomerDao {
 	public ResponseEntity<Customer> getCustomerById(int id) {
 		
 		Customer customer=customerRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Not found Customer with id = " + id));
 		return new ResponseEntity<>(customer, HttpStatus.OK);
 	}
 
