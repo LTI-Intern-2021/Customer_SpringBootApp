@@ -1,12 +1,11 @@
 package com.example.Controller;
 
 import java.util.Collection;
-import java.util.Optional;
+
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +17,6 @@ import com.example.Entity.Customer;
 import com.example.service.CustomerService;
 
 import lombok.extern.slf4j.Slf4j;
-import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,14 +56,6 @@ public class CustomerController {
 	}
 	
 
-	/*
-	@DeleteMapping("/{id}")
-	public Customer delCustomerById(@PathVariable("id") int id)
-	{
-		logger.info("Inside Controller's delCustomerById method");
-		return customerService.delCustomerById(id);
-	}
-	*/
 
 	
 
