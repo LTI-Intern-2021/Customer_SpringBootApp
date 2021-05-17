@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.util.Collection;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.example.Entity.Customer;
 import com.example.dao.CustomerDao;
 
 @Service
+
 public class CustomerService {
 
 	@Autowired
@@ -35,13 +37,13 @@ public class CustomerService {
 		return customerDao.getCustomerById(id);
 	}
 	
-	public Optional<Customer> delByCustomerId(int id)
+	public void delByCustomerId(int id)
 	{
-		return customerDao.delByCustomerId(id);
+		customerDao.delByCustomerId(id);
 	}
 	
-	 public Optional<Customer> updateCustomerById(int id, CustomerUpdateInfo customerUpdateInfo) 
+	 public Customer updateCustomerById(int id, Customer customer) 
 	 {
-        	return customerDao.updateCustomerById(id, customerUpdateInfo);
+        	return customerDao.updateCustomerById(id, customer);
     	}
 }
