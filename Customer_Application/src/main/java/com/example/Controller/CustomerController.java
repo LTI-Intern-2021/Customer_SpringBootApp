@@ -39,6 +39,7 @@ public class CustomerController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") int id)
 	{
+		
 		return customerService.getCustomerById(id);
 	}
 
