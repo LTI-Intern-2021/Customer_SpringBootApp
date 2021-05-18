@@ -40,6 +40,7 @@ public class CustomerController {
 	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") int id)
 	{
 		
+		logger.info("Inside Controller's getCustomerById method");
 		return customerService.getCustomerById(id);
 	}
 
@@ -55,6 +56,7 @@ public class CustomerController {
 	public Optional<Customer> updateCustomerById(@PathVariable("id") int id, @RequestBody CustomerUpdateInfo
 			customerUpdateInfo)
 	{
+		logger.info("Inside Controller's updateCustomerById method");
 		return customerService.updateCustomerById(id, customerUpdateInfo);
 	}
 
